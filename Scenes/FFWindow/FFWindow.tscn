@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/UI/Window/WBR.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Window/WTR.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/Window/WBL.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/FFWindow/FFWindow.gd" type="Script" id=4]
+[ext_resource path="res://Assets/UI/Window/WTL.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/Window/LINEB.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/Window/LINET.png" type="Texture" id=7]
+
+[node name="FFWindow" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Filling" type="Polygon2D" parent="."]
+color = Color( 1, 0.905882, 0.611765, 1 )
+polygon = PoolVector2Array( 0, 0, 50, 0, 50, 50, 0, 50 )
+
+[node name="Border" type="Node2D" parent="."]
+
+[node name="WTL" type="Sprite" parent="Border"]
+texture = ExtResource( 5 )
+
+[node name="Top" type="Line2D" parent="Border/WTL"]
+position = Vector2( 3, 0 )
+points = PoolVector2Array( 0, 0, 44, 0 )
+width = 6.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 7 )
+texture_mode = 2
+
+[node name="WTR" type="Sprite" parent="Border"]
+position = Vector2( 50, 0 )
+texture = ExtResource( 2 )
+offset = Vector2( 1, 0 )
+
+[node name="Right" type="Line2D" parent="Border/WTR"]
+position = Vector2( 0, 3 )
+rotation = 1.5708
+points = PoolVector2Array( 0, 0, 44, 0 )
+width = 6.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 6 )
+texture_mode = 2
+
+[node name="Shadow" type="Line2D" parent="Border/WTR"]
+position = Vector2( 4, 3 )
+rotation = 1.5708
+points = PoolVector2Array( 0, 0, 44, 0 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="WBR" type="Sprite" parent="Border"]
+position = Vector2( 50, 50 )
+texture = ExtResource( 1 )
+offset = Vector2( 1, 1 )
+
+[node name="Bottom" type="Line2D" parent="Border/WBR"]
+position = Vector2( -3, 0 )
+rotation = 3.14159
+points = PoolVector2Array( 0, 0, 44, 0 )
+width = 6.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 6 )
+texture_mode = 2
+
+[node name="Shadow" type="Line2D" parent="Border/WBR"]
+position = Vector2( -3, 4 )
+rotation = 3.14159
+points = PoolVector2Array( 0, 0, 44, 0 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="WBL" type="Sprite" parent="Border"]
+position = Vector2( 0, 50 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, 1 )
+
+[node name="Left" type="Line2D" parent="Border/WBL"]
+position = Vector2( 0, -3 )
+rotation = -1.5708
+points = PoolVector2Array( 0, 0, 44, 0 )
+width = 6.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 7 )
+texture_mode = 2

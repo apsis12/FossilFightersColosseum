@@ -1,0 +1,107 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scenes/FossilBattle/BattleTeam/BattleTeam.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Battle/backgrounds/Battle_City_V2.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/FossilBattle/FossilBattleScn.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/FossilBattle/BattleUI/BattleUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/FossilBattle/Other/BarNotification/BarNotification.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/FossilBattle/Other/FPindicator/FPIndicatorR.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/FossilBattle/Other/LPCompare/LPCompare.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Battle/Commentator/PA/neutral.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Music/50_Object Battle.wav" type="AudioStream" id=9]
+[ext_resource path="res://Scripts/Generic/Camera2D.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Battle/Commentator/Slate/angry.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/Generic/MusicLoop.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/FossilBattle/Other/SkillIndicator/SkillIndicator.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/FossilBattle/Other/FPindicator/FPIndicatorL.tscn" type="PackedScene" id=14]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Initialize"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("LPCompare:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 256, 422 ), Vector2( 256, 166 ), Vector2( 256, 134 ), Vector2( 256, -122 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("LPCompare:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 256, 500 ) ]
+}
+
+[node name="FossilBattle" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+script = ExtResource( 12 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+zoom = Vector2( 0.5, 0.5 )
+script = ExtResource( 10 )
+
+[node name="Battlefield" type="Sprite" parent="."]
+position = Vector2( -1, 4.76837e-07 )
+scale = Vector2( 0.789231, 0.671875 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="TeamL" parent="." instance=ExtResource( 1 )]
+position = Vector2( 182, 123 )
+
+[node name="TeamR" parent="." instance=ExtResource( 1 )]
+position = Vector2( 340, 123 )
+
+[node name="BattleUI" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="BarNotification" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 0, 250 )
+
+[node name="Neutral" type="Sprite" parent="."]
+position = Vector2( -205, 150 )
+texture = ExtResource( 8 )
+
+[node name="Angry" type="Sprite" parent="."]
+position = Vector2( -230, 134 )
+texture = ExtResource( 11 )
+
+[node name="FPIndicatorL" parent="." instance=ExtResource( 14 )]
+position = Vector2( 0, 300 )
+
+[node name="FPIndicatorR" parent="." instance=ExtResource( 6 )]
+position = Vector2( 512, 300 )
+
+[node name="SkillIndicator" parent="." instance=ExtResource( 13 )]
+position = Vector2( 256, 316 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Initialize = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="LPCompare" parent="." instance=ExtResource( 7 )]
+position = Vector2( 256, 500 )

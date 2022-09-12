@@ -1,0 +1,458 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Fonts/Resource/FFBasicFont.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Icon/stats/Attack.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Resource/FFStatNumbers.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Icon/stats/Evasion.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Icon/stats/Defense.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Icon/stats/LP.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Icon/stats/Accuracy.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/VivoView/TeamAnalysis/TeamAnalysis.gd" type="Script" id=8]
+
+[node name="TeamAnalysis" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Team Statistics" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 69.0
+margin_right = 147.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+text = "Team Statistics"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleRow" type="Node2D" parent="."]
+position = Vector2( 25, 20 )
+
+[node name="AZ" type="Label" parent="TitleRow"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 5.0
+margin_right = 17.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+text = "AZ"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SE-O" type="Label" parent="TitleRow"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 29.0
+margin_right = 53.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+text = "SE-O"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SZ1" type="Label" parent="TitleRow"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 62.0
+margin_right = 88.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+text = "SZ-1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SZ2" type="Label" parent="TitleRow"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 95.0
+margin_right = 124.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+text = "SZ-2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Totals" type="Label" parent="TitleRow"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 130.0
+margin_right = 162.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+text = "Total"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SE-E" type="Label" parent="TitleRow"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 169.0
+margin_right = 201.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+text = "SE-E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatIcons" type="Node2D" parent="."]
+position = Vector2( 0, 35 )
+
+[node name="LP" type="Sprite" parent="StatIcons"]
+position = Vector2( 2, 3 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Attack" type="Sprite" parent="StatIcons"]
+position = Vector2( 0, 20 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Defense" type="Sprite" parent="StatIcons"]
+position = Vector2( 0, 40 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Accuracy" type="Sprite" parent="StatIcons"]
+position = Vector2( 0, 60 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Evasion" type="Sprite" parent="StatIcons"]
+position = Vector2( 0, 80 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="AZ" type="Node2D" parent="."]
+position = Vector2( 22, 35 )
+
+[node name="LP" type="Label" parent="AZ"]
+margin_right = 24.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Label" parent="AZ"]
+margin_top = 20.0
+margin_right = 24.0
+margin_bottom = 34.0
+theme = ExtResource( 3 )
+text = "---"
+
+[node name="Defense" type="Label" parent="AZ"]
+margin_top = 40.0
+margin_right = 24.0
+margin_bottom = 54.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Accuracy" type="Label" parent="AZ"]
+margin_top = 60.0
+margin_right = 24.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Evasion" type="Label" parent="AZ"]
+margin_top = 80.0
+margin_right = 24.0
+margin_bottom = 94.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AZ_Modifiers" type="Node2D" parent="."]
+position = Vector2( 50, 35 )
+
+[node name="SAttack" type="Label" parent="AZ_Modifiers"]
+margin_top = 20.0
+margin_right = 32.0
+margin_bottom = 34.0
+theme = ExtResource( 3 )
+text = "0%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SDefense" type="Label" parent="AZ_Modifiers"]
+margin_top = 40.0
+margin_right = 32.0
+margin_bottom = 54.0
+theme = ExtResource( 3 )
+text = "0%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SAccuracy" type="Label" parent="AZ_Modifiers"]
+margin_top = 60.0
+margin_right = 32.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+text = "0%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SEvasion" type="Label" parent="AZ_Modifiers"]
+margin_top = 80.0
+margin_right = 32.0
+margin_bottom = 94.0
+theme = ExtResource( 3 )
+text = "0%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SZ1" type="Node2D" parent="."]
+position = Vector2( 86, 35 )
+
+[node name="LP" type="Label" parent="SZ1"]
+margin_right = 24.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Label" parent="SZ1"]
+margin_top = 20.0
+margin_right = 24.0
+margin_bottom = 34.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Defense" type="Label" parent="SZ1"]
+margin_top = 40.0
+margin_right = 24.0
+margin_bottom = 54.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Accuracy" type="Label" parent="SZ1"]
+margin_top = 60.0
+margin_right = 24.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Evasion" type="Label" parent="SZ1"]
+margin_top = 80.0
+margin_right = 24.0
+margin_bottom = 94.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SZ2" type="Node2D" parent="."]
+position = Vector2( 120, 35 )
+
+[node name="LP" type="Label" parent="SZ2"]
+margin_right = 24.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Label" parent="SZ2"]
+margin_top = 20.0
+margin_right = 24.0
+margin_bottom = 34.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Defense" type="Label" parent="SZ2"]
+margin_top = 40.0
+margin_right = 24.0
+margin_bottom = 54.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Accuracy" type="Label" parent="SZ2"]
+margin_top = 60.0
+margin_right = 24.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Evasion" type="Label" parent="SZ2"]
+margin_top = 80.0
+margin_right = 24.0
+margin_bottom = 94.0
+theme = ExtResource( 3 )
+text = "---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Total" type="Node2D" parent="."]
+position = Vector2( 155, 35 )
+
+[node name="LP" type="Label" parent="Total"]
+margin_right = 24.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Label" parent="Total"]
+margin_top = 20.0
+margin_right = 24.0
+margin_bottom = 34.0
+theme = ExtResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Defense" type="Label" parent="Total"]
+margin_top = 40.0
+margin_right = 24.0
+margin_bottom = 54.0
+theme = ExtResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Accuracy" type="Label" parent="Total"]
+margin_top = 60.0
+margin_right = 24.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Evasion" type="Label" parent="Total"]
+margin_top = 80.0
+margin_right = 24.0
+margin_bottom = 94.0
+theme = ExtResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SE_E" type="Node2D" parent="."]
+position = Vector2( 191, 35 )
+
+[node name="SAttack" type="Label" parent="SE_E"]
+margin_top = 20.0
+margin_right = 32.0
+margin_bottom = 34.0
+theme = ExtResource( 3 )
+text = "0%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SDefense" type="Label" parent="SE_E"]
+margin_top = 40.0
+margin_right = 32.0
+margin_bottom = 54.0
+theme = ExtResource( 3 )
+text = "0%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SAccuracy" type="Label" parent="SE_E"]
+margin_top = 60.0
+margin_right = 32.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+text = "0%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SEvasion" type="Label" parent="SE_E"]
+margin_top = 80.0
+margin_right = 32.0
+margin_bottom = 94.0
+theme = ExtResource( 3 )
+text = "0%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Seperators" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Seperators"]
+position = Vector2( 50, 20 )
+points = PoolVector2Array( 0, 0, 0, 110 )
+width = 1.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="Line2D2" type="Line2D" parent="Seperators"]
+position = Vector2( 82, 20 )
+points = PoolVector2Array( 0, 0, 0, 110 )
+width = 1.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="Line2D3" type="Line2D" parent="Seperators"]
+position = Vector2( 115, 20 )
+points = PoolVector2Array( 0, 0, 0, 110 )
+width = 1.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="Line2D4" type="Line2D" parent="Seperators"]
+position = Vector2( 150, 20 )
+points = PoolVector2Array( 0, 0, 0, 110 )
+width = 1.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="Line2D5" type="Line2D" parent="Seperators"]
+position = Vector2( 190, 20 )
+points = PoolVector2Array( 0, 0, 0, 110 )
+width = 1.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="Line2D6" type="Line2D" parent="Seperators"]
+position = Vector2( 22, 32 )
+points = PoolVector2Array( 0, 0, 198, 0 )
+width = 1.0
+default_color = Color( 0, 0, 0, 1 )

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/Resource/FFBasicFont.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/FFWindow/FFWindow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/UI/Slider.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/FFWindow/FFSlider/FFSlider.gd" type="Script" id=4]
+
+[node name="FFWindow" instance=ExtResource( 2 )]
+script = ExtResource( 4 )
+
+[node name="Reasons" type="Node2D" parent="Border/WTL" index="1"]
+
+[node name="Back" type="Line2D" parent="Border/WTL/Reasons" index="0"]
+position = Vector2( 5, 9.5 )
+z_index = 1
+points = PoolVector2Array( 0, 0, 40, 0 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="Slider" type="Sprite" parent="Border/WTL/Reasons/Back" index="0"]
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Border/WBL" index="1"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 5.0
+margin_top = -15.0
+margin_right = 48.0
+margin_bottom = -4.0
+theme = ExtResource( 1 )
+text = "text"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

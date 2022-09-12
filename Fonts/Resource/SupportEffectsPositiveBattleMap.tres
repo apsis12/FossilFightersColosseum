@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Font/SupportEffectsPositiveBattleMap.png" type="Texture" id=1]
+
+[sub_resource type="BitmapFont" id=1]
+textures = [ ExtResource( 1 ) ]
+chars = PoolIntArray( 32, 0, 0, 0, 5, 8, 0, 0, 5, 48, 0, 5, 0, 5, 8, 0, 0, 5, 56, 0, 44, 0, 5, 8, 0, 0, 5, 49, 0, 10, 0, 4, 8, 0, 0, 4, 57, 0, 49, 0, 5, 8, 0, 0, 5, 50, 0, 14, 0, 5, 8, 0, 0, 5, 51, 0, 19, 0, 5, 8, 0, 0, 5, 43, 0, 54, 0, 7, 8, 0, 0, 7, 52, 0, 24, 0, 5, 8, 0, 0, 5, 53, 0, 29, 0, 5, 8, 0, 0, 5, 54, 0, 34, 0, 5, 8, 0, 0, 5, 55, 0, 39, 0, 5, 8, 0, 0, 5 )
+height = 8.0
+
+[resource]
+default_font = SubResource( 1 )

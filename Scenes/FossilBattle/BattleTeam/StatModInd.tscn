@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Icon/stats/Defense.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Icon/stats/Attack.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Icon/stats/Accuracy.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Icon/stats/Evasion.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/FossilBattle/BattleTeam/StatModInd.gd" type="Script" id=6]
+[ext_resource path="res://Fonts/Resource/SupportEffectsPositiveBattleMap.tres" type="Theme" id=7]
+
+[node name="AZ_Mods" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Attack" type="Label" parent="."]
+margin_left = -1.0
+margin_top = 4.0
+margin_right = 28.0
+margin_bottom = 12.0
+theme = ExtResource( 7 )
+text = "+10"
+
+[node name="Icon" type="Sprite" parent="Attack"]
+position = Vector2( -9, 4 )
+texture = ExtResource( 3 )
+
+[node name="Defense" type="Label" parent="."]
+margin_left = -1.0
+margin_top = 20.0
+margin_right = 28.0
+margin_bottom = 28.0
+theme = ExtResource( 7 )
+text = "+10"
+
+[node name="Icon" type="Sprite" parent="Defense"]
+position = Vector2( -9, 4 )
+texture = ExtResource( 2 )
+
+[node name="Accuracy" type="Label" parent="."]
+margin_left = -1.0
+margin_top = 36.0
+margin_right = 28.0
+margin_bottom = 44.0
+theme = ExtResource( 7 )
+text = "+10"
+
+[node name="Icon" type="Sprite" parent="Accuracy"]
+position = Vector2( -9, 4 )
+texture = ExtResource( 4 )
+
+[node name="Evasion" type="Label" parent="."]
+margin_left = -1.0
+margin_top = 52.0
+margin_right = 28.0
+margin_bottom = 60.0
+theme = ExtResource( 7 )
+text = "+10"
+
+[node name="Icon" type="Sprite" parent="Evasion"]
+position = Vector2( -9, 4 )
+texture = ExtResource( 5 )

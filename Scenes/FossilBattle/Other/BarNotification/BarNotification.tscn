@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/Resource/FFBasicFont.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Battle/notification_background_stretch.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/FossilBattle/Other/BarNotification/BarNotification.gd" type="Script" id=3]
+
+[node name="BarNotification" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 255.249, 0, 512, 0 )
+width = 23.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 2 )
+texture_mode = 2
+
+[node name="Label" type="Label" parent="."]
+margin_top = -6.0
+margin_right = 512.0
+margin_bottom = 5.0
+theme = ExtResource( 1 )
+text = "beatin"
+align = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

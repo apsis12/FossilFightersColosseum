@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/VivoView/backgrounds/VivoInfoBlank_250x270.png" type="Texture" id=1]
+[ext_resource path="res://Assets/SFX/VMM/switchtab.wav" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/VivoView/VivoHeader/VivoHeader.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/VivoView/TeamAnalysis/TeamAnalysis.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/UI/UISpace/UIItem.gd" type="Script" id=5]
+[ext_resource path="res://Assets/VivoView/tab/Vivo_Info.png" type="Texture" id=6]
+[ext_resource path="res://Assets/VivoView/Fossilary/Cry_Button_Idle.png" type="Texture" id=7]
+[ext_resource path="res://Assets/VivoView/tab/Vivo_Bones.png" type="Texture" id=8]
+[ext_resource path="res://Assets/VivoView/tab/Vivo_Skills1.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/VivoView/VivoOverview/VivoOverview.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/VivoView/VivoView.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/VivoView/SkillView/SkillView.tscn" type="PackedScene" id=16]
+
+[node name="VivoView" type="Sprite"]
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 15 )
+
+[node name="TabSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Cry" type="AudioStreamPlayer" parent="."]
+
+[node name="CryButton" type="Sprite" parent="."]
+position = Vector2( 23, 254 )
+texture = ExtResource( 7 )
+script = ExtResource( 5 )
+
+[node name="VivoHeader" parent="." instance=ExtResource( 3 )]
+position = Vector2( 6, 6 )
+
+[node name="Slides" type="Node2D" parent="."]
+
+[node name="VivoOverview" parent="Slides" instance=ExtResource( 14 )]
+position = Vector2( 15, 48 )
+
+[node name="SkillView" parent="Slides" instance=ExtResource( 16 )]
+visible = false
+position = Vector2( 1, 42 )
+
+[node name="TeamAnalysis" parent="Slides" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 13, 70 )
+
+[node name="Tabs" type="Node2D" parent="."]
+position = Vector2( 153, 261 )
+
+[node name="Overview" type="Sprite" parent="Tabs"]
+texture = ExtResource( 6 )
+script = ExtResource( 5 )
+cursor_offset = Vector2( 5, -2 )
+cursor_rotation = 1.571
+
+[node name="Skill" type="Sprite" parent="Tabs"]
+position = Vector2( 36, 0 )
+texture = ExtResource( 10 )
+script = ExtResource( 5 )
+cursor_offset = Vector2( 5, -2 )
+cursor_rotation = 1.571
+
+[node name="Team" type="Sprite" parent="Tabs"]
+position = Vector2( 72, 0 )
+texture = ExtResource( 8 )
+script = ExtResource( 5 )
+cursor_offset = Vector2( 5, -2 )
+cursor_rotation = 1.571
+
+[connection signal="selected" from="CryButton" to="." method="_on_Cry_selected"]
+[connection signal="selected" from="Tabs/Overview" to="." method="_tab_selected"]
+[connection signal="selected" from="Tabs/Skill" to="." method="_tab_selected"]
+[connection signal="selected" from="Tabs/Team" to="." method="_tab_selected"]

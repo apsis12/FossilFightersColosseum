@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fonts/Resource/FFBasicFont.tres" type="Theme" id=1]
+[ext_resource path="res://Fonts/Resource/FFStatNumbers.tres" type="Theme" id=2]
+[ext_resource path="res://Fonts/Resource/FFVivoIndexDigit.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Icon/stats/Rank.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Icon/element/legendary_Medal.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/VivoView/VivoHeader/VivoHeader.gd" type="Script" id=6]
+
+[node name="VivoHeader" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Element" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Name" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 20.0
+margin_top = 2.0
+margin_right = 60.0
+margin_bottom = 16.0
+theme = ExtResource( 1 )
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TypeSize" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 20.0
+margin_top = 16.0
+margin_right = 70.0
+margin_bottom = 30.0
+theme = ExtResource( 1 )
+text = "Range (Type) / Size"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Index" type="Label" parent="."]
+margin_left = 213.0
+margin_top = 4.0
+margin_right = 237.0
+margin_bottom = 10.0
+theme = ExtResource( 3 )
+text = "001"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rank" type="Sprite" parent="."]
+position = Vector2( 213, 21 )
+texture = ExtResource( 4 )
+
+[node name="Tag" type="Label" parent="Rank"]
+margin_left = 10.0
+margin_top = -7.0
+margin_right = 25.0
+margin_bottom = 7.0
+theme = ExtResource( 2 )
+text = "12"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,330 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Scripts/UI/UISpace/UICursor.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/FossilBattle/BattleUI/BattleUIScn.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Battle/actions/use_skill_idle.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Battle/actions/swap_positions_select.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Battle/actions/use_skill_select.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Battle/actions/end_turn_idle.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Battle/actions/view_info_idle.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Battle/actions/view_info_select.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/FossilBattle/BattleUI/ActionButton.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Battle/actions/end_turn_select.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/FossilBattle/BattleUI/Actions.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Battle/indicators/map_select_bv.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Battle/actions/swap_positions_idle.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/FFWindow/FFWindow.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/FossilBattle/BattleUI/SkillSelect.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/FossilBattle/BattleUI/Skill/FossilBattleSkill.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/FossilBattle/BattleUI/VivoInfo.gd" type="Script" id=17]
+[ext_resource path="res://Fonts/Resource/FFBasicFont.tres" type="Theme" id=18]
+[ext_resource path="res://Assets/Battle/panels/vivo_info_blank.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Battle/panels/info_center.png" type="Texture" id=20]
+[ext_resource path="res://Scenes/FossilBattle/BattleUI/InfoCenter.gd" type="Script" id=21]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ), Vector2( 0, -15 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 30 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -153.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[node name="BattleUI" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="Actions" type="Node2D" parent="."]
+position = Vector2( 256, 190 )
+script = ExtResource( 11 )
+
+[node name="Info" type="Sprite" parent="Actions"]
+position = Vector2( 0, -25 )
+texture = ExtResource( 7 )
+script = ExtResource( 9 )
+show_cursor = false
+texture_focus = ExtResource( 8 )
+
+[node name="Skill" type="Sprite" parent="Actions"]
+position = Vector2( 25, 0 )
+texture = ExtResource( 3 )
+script = ExtResource( 9 )
+show_cursor = false
+texture_focus = ExtResource( 5 )
+
+[node name="End" type="Sprite" parent="Actions"]
+position = Vector2( 0, 25 )
+texture = ExtResource( 6 )
+script = ExtResource( 9 )
+show_cursor = false
+texture_focus = ExtResource( 10 )
+
+[node name="Swap" type="Sprite" parent="Actions"]
+position = Vector2( -25, 0 )
+texture = ExtResource( 13 )
+script = ExtResource( 9 )
+show_cursor = false
+texture_focus = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="Actions"]
+
+[node name="UICursor" type="Sprite" parent="."]
+position = Vector2( -14, -75 )
+texture = ExtResource( 12 )
+script = ExtResource( 1 )
+center_on_item = true
+
+[node name="SkillSelect" type="Node2D" parent="."]
+visible = false
+position = Vector2( 258, 24 )
+script = ExtResource( 15 )
+
+[node name="FFWindow" parent="SkillSelect" instance=ExtResource( 14 )]
+auto_open = false
+
+[node name="FossilBattleSkill0" parent="SkillSelect/FFWindow" instance=ExtResource( 16 )]
+position = Vector2( 0, 10 )
+show_cursor = false
+
+[node name="FossilBattleSkill1" parent="SkillSelect/FFWindow" instance=ExtResource( 16 )]
+position = Vector2( 0, 33 )
+show_cursor = false
+
+[node name="FossilBattleSkill2" parent="SkillSelect/FFWindow" instance=ExtResource( 16 )]
+position = Vector2( 0, 56 )
+show_cursor = false
+
+[node name="FossilBattleSkill3" parent="SkillSelect/FFWindow" instance=ExtResource( 16 )]
+position = Vector2( 0, 80 )
+show_cursor = false
+
+[node name="FossilBattleSkill4" parent="SkillSelect/FFWindow" instance=ExtResource( 16 )]
+position = Vector2( 0, 104 )
+show_cursor = false
+
+[node name="InfoCenter" type="Node2D" parent="."]
+position = Vector2( 256, 300 )
+script = ExtResource( 21 )
+
+[node name="Tween" type="Tween" parent="InfoCenter"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InfoCenter"]
+anims/Popup = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="InfoCenter"]
+position = Vector2( 0, 20 )
+texture = ExtResource( 20 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InfoCenter/Sprite"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -118.0
+margin_top = -14.0
+margin_right = 118.0
+margin_bottom = 10.0
+theme = ExtResource( 18 )
+scroll_active = false
+
+[node name="VivoInfo" type="Node2D" parent="."]
+position = Vector2( 258, 353 )
+script = ExtResource( 17 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VivoInfo"]
+anims/RESET = SubResource( 1 )
+anims/Show = SubResource( 2 )
+
+[node name="Background" type="Sprite" parent="VivoInfo"]
+position = Vector2( 0, 30 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 19 )
+
+[node name="Vivo" type="Node2D" parent="VivoInfo/Background"]
+visible = false
+
+[node name="Label" type="Label" parent="VivoInfo/Background/Vivo"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -55.0
+margin_top = -35.0
+margin_right = 56.0
+margin_bottom = -24.0
+theme = ExtResource( 18 )
+text = "Vivo Name"
+
+[node name="Health" type="Label" parent="VivoInfo/Background/Vivo"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -41.0
+margin_top = -15.0
+margin_right = 16.0
+margin_bottom = -4.0
+theme = ExtResource( 18 )
+text = "100"
+
+[node name="Rank" type="Label" parent="VivoInfo/Background/Vivo"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 35.0
+margin_top = -15.0
+margin_right = 57.0
+margin_bottom = -4.0
+theme = ExtResource( 18 )
+text = "12"
+
+[node name="Attack" type="Label" parent="VivoInfo/Background/Vivo"]
+margin_left = -41.0
+margin_top = 4.0
+margin_right = -3.0
+margin_bottom = 15.0
+theme = ExtResource( 18 )
+text = "99"
+
+[node name="Defense" type="Label" parent="VivoInfo/Background/Vivo"]
+margin_left = 20.0
+margin_top = 4.0
+margin_right = 58.0
+margin_bottom = 15.0
+theme = ExtResource( 18 )
+text = "99"
+
+[node name="Accuracy" type="Label" parent="VivoInfo/Background/Vivo"]
+margin_left = -41.0
+margin_top = 22.0
+margin_right = -3.0
+margin_bottom = 33.0
+theme = ExtResource( 18 )
+text = "99"
+
+[node name="Evasion" type="Label" parent="VivoInfo/Background/Vivo"]
+margin_left = 20.0
+margin_top = 22.0
+margin_right = 58.0
+margin_bottom = 33.0
+theme = ExtResource( 18 )
+text = "99"
+
+[node name="Skill" type="Node2D" parent="VivoInfo/Background"]
+visible = false
+
+[node name="Label" type="Label" parent="VivoInfo/Background/Skill"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -55.0
+margin_top = -35.0
+margin_right = 56.0
+margin_bottom = -24.0
+theme = ExtResource( 18 )
+text = "Skill Name"
+
+[node name="Power" type="Label" parent="VivoInfo/Background/Skill"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -55.0
+margin_top = -21.0
+margin_right = 56.0
+margin_bottom = -10.0
+theme = ExtResource( 18 )
+text = "Power: "
+
+[node name="Effect" type="Label" parent="VivoInfo/Background/Skill"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -55.0
+margin_top = -7.0
+margin_right = 56.0
+margin_bottom = 4.0
+theme = ExtResource( 18 )
+text = "Steal FP"
+
+[node name="Chance" type="Label" parent="VivoInfo/Background/Skill"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -55.0
+margin_top = 7.0
+margin_right = 56.0
+margin_bottom = 18.0
+theme = ExtResource( 18 )
+text = "100 chance"
+
+[node name="Target" type="Label" parent="VivoInfo/Background/Skill"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -55.0
+margin_top = 21.0
+margin_right = 56.0
+margin_bottom = 32.0
+theme = ExtResource( 18 )
+text = "Target: Enemy"

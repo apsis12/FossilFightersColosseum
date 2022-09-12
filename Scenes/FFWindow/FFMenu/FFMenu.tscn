@@ -1,0 +1,166 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/FFWindow/FFWindow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/UI/Menu/menu_optionselect_cap.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/FFWindow/FFMenu/FFMenu.gd" type="Script" id=3]
+[ext_resource path="res://Assets/UI/Menu/shovel_cursor.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Offset/Menu/ShovelCursor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 6.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Offset/Menu/ShovelCursor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Offset/Menu/ShovelCursor:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Offset/Menu/ShovelCursor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 6.0, 0.0, 6.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Offset/Menu/Highlight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Select_Conclusive"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Offset/Menu/ShovelCursor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 6.0, 0.0, 6.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Offset/Menu/Highlight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Offset/Menu/ShovelCursor:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[node name="FFWindow" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+default_conclusive = true
+initial_option = 0
+allow_escape = true
+close_on_escape = true
+free_automatically = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="0"]
+
+[node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+anims/Idle = SubResource( 1 )
+anims/Init = SubResource( 2 )
+anims/Select = SubResource( 3 )
+anims/Select_Conclusive = SubResource( 4 )
+
+[node name="MenuTween" type="Tween" parent="." index="2"]
+
+[node name="Left" parent="Border/WBL" index="0"]
+points = PoolVector2Array( 0, 0, 38.4899, 0, 44, 0 )
+
+[node name="Offset" type="Node2D" parent="." index="6"]
+position = Vector2( 0, 8 )
+
+[node name="Menu" type="Node2D" parent="Offset" index="0"]
+
+[node name="ShovelCursor" type="Sprite" parent="Offset/Menu" index="0"]
+rotation = -6.28319
+scale = Vector2( 2, 2 )
+z_index = 1
+texture = ExtResource( 4 )
+
+[node name="Highlight" type="Line2D" parent="Offset/Menu" index="1"]
+position = Vector2( 17, 1 )
+points = PoolVector2Array( 0, 0, 29, 0 )
+width = 12.0
+default_color = Color( 1, 0.741176, 0.580392, 1 )
+
+[node name="CapLeft" type="Sprite" parent="Offset/Menu/Highlight" index="0"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 2 )
+
+[node name="CapRight" type="Sprite" parent="Offset/Menu/Highlight" index="1"]
+position = Vector2( 30, 0 )
+texture = ExtResource( 2 )
+flip_h = true

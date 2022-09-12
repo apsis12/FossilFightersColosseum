@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/VivoView/RadialStatIndicator/RadialStatIndicator.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Icon/stats/Attack.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Icon/stats/Accuracy.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Icon/stats/Defense.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Icon/stats/Evasion.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Icon/stats/LP.png" type="Texture" id=6]
+
+[node name="RadialStatIndicator" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Icons" type="Node2D" parent="."]
+
+[node name="Lp" type="Sprite" parent="Icons"]
+texture = ExtResource( 6 )
+
+[node name="Attack" type="Sprite" parent="Icons"]
+texture = ExtResource( 2 )
+
+[node name="Defense" type="Sprite" parent="Icons"]
+texture = ExtResource( 4 )
+
+[node name="Accuracy" type="Sprite" parent="Icons"]
+texture = ExtResource( 3 )
+
+[node name="Evasion" type="Sprite" parent="Icons"]
+texture = ExtResource( 5 )

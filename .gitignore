@@ -1,0 +1,10 @@
+# textures, sfx, music
+Assets/
+
+# godot's imported resource files
+.import/
+*.import
+
+# exported executables
+*.x86_64
+*.exe
