@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Fonts/Resource/FFBasicFont.tres" type="Theme" id=1]
-[ext_resource path="res://Assets/Battle/notification_background_stretch.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Battle/indicators/notification_background_stretch.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/FossilBattle/Other/BarNotification/BarNotification.gd" type="Script" id=3]
 
 [node name="BarNotification" type="Node2D"]

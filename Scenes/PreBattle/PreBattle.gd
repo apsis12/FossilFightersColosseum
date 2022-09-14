@@ -30,7 +30,10 @@ func _on_Ready_selected(_node) -> void:
 	$UI.focused = false
 	var vivos:Array = []
 	for iter in $UI/Slots/Own.get_children():
-		vivos.append((iter as MedalSlot).medal.vivo)
+		if (iter as MedalSlot).medal != null:
+			vivos.append((iter as MedalSlot).medal.vivo)
+		else:
+			vivos.append(null)
 	GameVars.configured_team.set_array(vivos)
 	if GameVars.configured_team.is_valid():
 		yield(Canvas.interpolate_screen_modulation(Color.black, 0.2), "tween_all_completed")

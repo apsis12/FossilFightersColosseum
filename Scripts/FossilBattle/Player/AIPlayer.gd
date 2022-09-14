@@ -54,7 +54,6 @@ func process_turn(enemy_team:BattleTeam, attack_cnt:int) -> BattleAction.Generic
 		var mat:BattleAnalysis.Match
 		for bv in battle_team.get_avaliable():
 			mat = choose_match(match_attack(bv, battle_team, enemy_team), mat)
-			print(mat)
 		
 		if mat != null:
 			act = BattleAction.Move.new()

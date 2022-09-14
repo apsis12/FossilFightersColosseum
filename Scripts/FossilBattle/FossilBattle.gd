@@ -145,15 +145,6 @@ func change_health(bv:BattleVivo, team:BattleTeam, dlp:int, hook:bool = true) ->
 	
 	return faint
 
-func random_skill(bv:BattleVivo, team:BattleTeam) -> int:
-	var skillset_size:int = bv.vivo.dbentry.skills.size()
-	randomize()
-	var ind:int = randi() % (skillset_size + 1)
-	if ind < skillset_size:
-		if BattleRules.can_use_skill(bv.vivo.dbentry.skills[ind], bv, team):
-			return ind
-	return -1
-
 func exec_action(action:BattleAction.Generic, restrict_consequences:bool = false) -> bool:
 	var tmp
 	if action == null:
@@ -165,7 +156,7 @@ func exec_action(action:BattleAction.Generic, restrict_consequences:bool = false
 	attacking.battle_team.az.has_status_effect(Skill.STATUS_EFFECT.CONFUSE):
 		confused = true
 		var new_action:BattleAction.Generic
-		var new_skill:int = random_skill(attacking.battle_team.az, attacking.battle_team)
+		var new_skill:int = BattleRules.random_skill(attacking.battle_team.az, attacking.battle_team)
 		if new_skill == -1:
 			new_action = BattleAction.Swap.new()
 		else:

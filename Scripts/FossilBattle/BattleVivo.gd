@@ -66,7 +66,7 @@ func has_status_effect(effect:int) -> bool:
 
 func generate_scare_restricted_skills():
 	scare_restricted_skills.clear()
-	for i in range(vivo.dbentry.skills.size() / 2):
+	for _i in range(vivo.dbentry.skills.size() / 2):
 		while true:
 			randomize()
 			var skill:Skill = vivo.dbentry.skills[randi() % vivo.dbentry.skills.size()]

@@ -183,6 +183,16 @@ static func can_use_skill(skill:Skill, bv:BattleVivo, team:BattleTeam) -> bool:
 	return true
 
 
+static func random_skill(bv:BattleVivo, team:BattleTeam) -> int:
+	var skillset_size:int = bv.vivo.dbentry.skills.size()
+	randomize()
+	var ind:int = randi() % (skillset_size + 1)
+	if ind < skillset_size:
+		if can_use_skill(bv.vivo.dbentry.skills[ind], bv, team):
+			return ind
+	return -1
+
+
 static func get_bv_team(bv:BattleVivo, team1:BattleTeam, team2:BattleTeam) -> BattleTeam:
 	for team in [team1, team2]:
 		if team.get_all_zones().has(bv):

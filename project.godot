@@ -267,6 +267,7 @@ SubWindow="*res://Scripts/Autoload/subwindow.gd"
 
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
+gdscript/warnings/integer_division=false
 
 [display]
 
