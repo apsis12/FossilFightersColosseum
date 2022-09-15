@@ -7386,7 +7386,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Nigo Burst ",
@@ -7696,7 +7696,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Toxic Cutter ",
@@ -7796,7 +7796,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Mother's Heal ",
@@ -8354,7 +8354,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Wild Wheeze ",
@@ -8726,7 +8726,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Ceros Mirage ",
@@ -8788,7 +8788,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Boulder Barrage ",
@@ -8974,7 +8974,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Edapho Hurricane ",
@@ -9346,7 +9346,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Toxic Deluge ",
@@ -11096,7 +11096,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Barbaros Typhoon ",
@@ -12398,7 +12398,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Geneos Spike ",
@@ -13764,7 +13764,7 @@
 "Effect": "Eliminate Effects",
 "Severity": null,
 "Chance": 100,
-"Target": "Ally",
+"Target": "Team",
 },
 {
 "Skill": "Galebeam Breath",

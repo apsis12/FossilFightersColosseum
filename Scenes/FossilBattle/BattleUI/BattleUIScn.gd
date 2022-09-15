@@ -67,7 +67,6 @@ func close_status():
 		STATUS.VIEW_VIVO:
 			$VivoInfo/AnimationPlayer.stop()
 			$VivoInfo/AnimationPlayer.play_backwards("Show")
-#			yield($VivoInfo/AnimationPlayer, "animation_finished")
 	
 	match status:
 		STATUS.ACTIONS:
@@ -90,8 +89,6 @@ func set_status(new:int, force:bool = false):
 	
 	if new != status:
 		close_status()
-#		var tmp = close_status()
-#		if tmp is GDScriptFunctionState: yield(tmp, "completed")
 	
 	status = new
 	match status:
@@ -235,6 +232,8 @@ func select_current_item():
 				elif selected_skill.fp > battle_team.fp:
 					$InfoCenter.recieve("Not enough FP!")
 					error_sound()
+				elif Util.filter_null(BattleRules.allowed_targets(selected_skill, selected_bv, battle_team, enemy_team)).size() == 0:
+					$InfoCenter.recieve("No targets availiable!")
 				else:
 					set_status(STATUS.SELECT_VIVO_TARGET)
 			STATUS.SELECT_VIVO_TARGET:
