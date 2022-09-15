@@ -57,9 +57,12 @@ func battle_end_hook(winner:BattlePlayer):
 func apply_se_hook(bv:BattleVivo, team:BattleTeam, remove:bool):
 	team.az_mods_indicator.push_mods(team.az_mods)
 	if not remove:
+		var resume_engage:bool = bv.animations.is_playing() and bv.animations.current_animation == "Engage"
 		bv.animate("Activate_SE")
 		yield(team.az_mods_indicator.tween, "tween_all_completed")
 		yield(get_tree().create_timer(0.5), "timeout")
+		if resume_engage:
+			bv.animate("Engage")
 
 func change_fp_hook(team:BattleTeam, fp:int):
 	team.fp_indicator.push_change(team.fp, fp)
@@ -81,7 +84,7 @@ func beginning_of_turn_hook():
 func end_of_turn_hook():
 	for team in [attacking.battle_team, defending.battle_team]:
 		for bv in team.get_all_zones():
-			if bv.animations.current_animation == "Hit":
+			if bv.animations.is_playing() and bv.animations.current_animation == "Hit":
 				yield(bv.animations, "animation_finished")
 
 func start_move_hook(action:BattleAction.Move):
@@ -138,7 +141,6 @@ func hit_hook(action:BattleAction.Move, target:BattleVivo, skill:Skill, damage:i
 		if hit + 1 == hit_cnt:
 			hit_dmg = damage - dmg_sofar
 		else:
-# warning-ignore:integer_division
 			hit_dmg = damage / (offsetted - hit)
 		dmg_sofar += hit_dmg
 		

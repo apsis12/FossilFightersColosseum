@@ -30,7 +30,7 @@ func generate_random(member_count:int = 5):
 	for _i in range(member_count):
 		var vivosaur:Vivosaur = Vivosaur.new()
 		randomize()
-		vivosaur.list_index = randi() % int(min(114, Vivodata.metadb.size()))
+		vivosaur.list_index = randi() % Vivodata.metadb.size()
 		arr.append(vivosaur)
 	set_array(arr)
 	label = "Randomly Generated"

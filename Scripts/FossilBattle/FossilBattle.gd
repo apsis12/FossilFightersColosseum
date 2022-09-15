@@ -176,7 +176,8 @@ func exec_action(action:BattleAction.Generic, restrict_consequences:bool = false
 		assert(not action.acting.exhausted_turn, "Vivo has spent turn")
 		
 		var skill:Skill = action.acting.vivo.dbentry.skills[action.skill]
-		assert(BattleRules.can_use_skill(skill, action.acting, attacking.battle_team), "Cannot use skill")
+		if not restrict_consequences:
+			assert(BattleRules.can_use_skill(skill, action.acting, attacking.battle_team), "Cannot use skill")
 		
 		if not restrict_consequences:
 			action.acting.exhausted_turn = true
@@ -319,7 +320,6 @@ func exec_action(action:BattleAction.Generic, restrict_consequences:bool = false
 							tmp = change_health(target, BattleRules.get_bv_team(target, attacking.battle_team, defending.battle_team), health_exchange)
 							if tmp is GDScriptFunctionState: yield(tmp, "completed")
 						Skill.EFFECT.FP_EQUALIZE:
-	# warning-ignore:integer_division
 							var average_fp:int = (attacking.battle_team.fp + defending.battle_team.fp) / 2
 							for team in get_both_teams():
 								var last:int = team.fp
@@ -471,7 +471,6 @@ func turn() -> BattlePlayer:
 				1: divisor = 8
 				2: divisor = 6
 				3: divisor = 4
-# warning-ignore:integer_division
 			faint = change_health(attacking.battle_team.az, attacking.battle_team, -attacking.battle_team.az.vivo.dbentry.lp / divisor)
 			if faint is GDScriptFunctionState: faint = yield(faint, "completed")
 			if faint:
