@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/PreBattle/PreBattleMedalUIServerScn.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Generic/Camera2D.gd" type="Script" id=2]
@@ -13,7 +13,9 @@
 [ext_resource path="res://Scripts/Medals/MedalSlot.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/PreBattle/PreBattle.gd" type="Script" id=12]
 [ext_resource path="res://Fonts/Resource/FFBasicFont.tres" type="Theme" id=13]
-[ext_resource path="res://Scripts/UI/UISpace/UIItem.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/VMM/FunctionBarButton.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/PreBattle/ItemList.gd" type="Script" id=15]
+[ext_resource path="res://Assets/VivoView/buttons/FFLoad.png" type="Texture" id=16]
 [ext_resource path="res://Scripts/Generic/MusicLoop.gd" type="Script" id=18]
 [ext_resource path="res://Assets/Music/09_Battle Briefing.wav" type="AudioStream" id=19]
 
@@ -86,7 +88,7 @@ theme = ExtResource( 13 )
 text = "Enemy"
 
 [node name="TeamHolderBattle" type="Sprite" parent="UI"]
-position = Vector2( 386, 186 )
+position = Vector2( 386, 176 )
 texture = ExtResource( 5 )
 
 [node name="Player" type="Label" parent="UI/TeamHolderBattle"]
@@ -121,23 +123,23 @@ script = ExtResource( 10 )
 [node name="Own" type="Node2D" parent="UI/Slots"]
 
 [node name="MedalSlot" type="Sprite" parent="UI/Slots/Own"]
-position = Vector2( 308, 201 )
+position = Vector2( 308, 191 )
 script = ExtResource( 11 )
 
 [node name="MedalSlot2" type="Sprite" parent="UI/Slots/Own"]
-position = Vector2( 353, 201 )
+position = Vector2( 353, 191 )
 script = ExtResource( 11 )
 
 [node name="MedalSlot3" type="Sprite" parent="UI/Slots/Own"]
-position = Vector2( 390, 201 )
+position = Vector2( 390, 191 )
 script = ExtResource( 11 )
 
 [node name="MedalSlot4" type="Sprite" parent="UI/Slots/Own"]
-position = Vector2( 440, 201 )
+position = Vector2( 440, 191 )
 script = ExtResource( 11 )
 
 [node name="MedalSlot5" type="Sprite" parent="UI/Slots/Own"]
-position = Vector2( 476, 201 )
+position = Vector2( 476, 191 )
 script = ExtResource( 11 )
 
 [node name="Enemy" type="Node2D" parent="UI/Slots"]
@@ -157,16 +159,33 @@ script = ExtResource( 11 )
 [node name="Menu" type="Node2D" parent="UI"]
 
 [node name="Ready" type="Sprite" parent="UI"]
-position = Vector2( 464, 283 )
+position = Vector2( 467, 287 )
 texture = ExtResource( 7 )
 script = ExtResource( 14 )
 
 [node name="Back" type="Sprite" parent="UI"]
-position = Vector2( 356, 293 )
+position = Vector2( 381, 293 )
 texture = ExtResource( 8 )
 script = ExtResource( 14 )
+
+[node name="Load" type="Sprite" parent="UI"]
+position = Vector2( 298, 293 )
+texture = ExtResource( 16 )
+script = ExtResource( 14 )
+
+[node name="ItemList" type="ItemList" parent="UI"]
+visible = false
+margin_left = 178.0
+margin_top = 37.0
+margin_right = 344.0
+margin_bottom = 270.0
+focus_mode = 0
+theme = ExtResource( 13 )
+script = ExtResource( 15 )
 
 [connection signal="new_vivosaur_focused" from="UI" to="VivoView" method="push_vivosaur"]
 [connection signal="slots_updated" from="UI" to="." method="_on_UI_slots_updated"]
 [connection signal="selected" from="UI/Ready" to="." method="_on_Ready_selected"]
 [connection signal="selected" from="UI/Back" to="." method="_on_Back_selected"]
+[connection signal="selected" from="UI/Load" to="UI" method="_on_FfLoad_selected"]
+[connection signal="item_activated" from="UI/ItemList" to="UI" method="_on_ItemList_item_activated"]

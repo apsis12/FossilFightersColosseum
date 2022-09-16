@@ -17,7 +17,7 @@ git clone https://github.com/apsis12/FossilFightersColosseum
   4) Open the godot project manager and register the project's directory by clicking `Scan` and navigating the file dialogue. Once inside the editor, run the project by pressing `<f5>` or clicking the play button on the top-right.
 
 ## Notes
-- The team names `Main` and `Enemy` represent the player's team and the AI opponent's team, respectively. If no saved teams exist with those names, they are randomly generated.
+- The team names `Main` and `Enemy` represent the player's and the AI opponent's default teams, respectively. If no saved teams exist with those names, they are randomly generated.
 
 ## Attributions
   Special thanks to:
