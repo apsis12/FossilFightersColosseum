@@ -9,7 +9,7 @@ A Fossil Fighters team-builder and battle simulator. This project is currently i
 
   2) Clone this repository to your local machine:
 ```bash
-git clone https://github.com/apsis12/ffcolosseum
+git clone https://github.com/apsis12/FossilFightersColosseum
 ```
 
   3) [Download the asset pack](https://drive.google.com/drive/folders/1mmnDvbb4Qh3coSmmhaAq_m5HXdcsM4nj?usp=sharing), move it to the `FossilFightersColosseum` directory, and rename it to `Assets`.
