@@ -54,6 +54,7 @@ func set_own(team:Team):
 	emit_signal("slots_updated")
 
 func set_enemy(team:Team):
+	GameVars.enemy_team = team
 	set_team(team.get_battlers(), $Slots/Enemy)
 
 func _on_ItemList_item_activated(index: int) -> void:
