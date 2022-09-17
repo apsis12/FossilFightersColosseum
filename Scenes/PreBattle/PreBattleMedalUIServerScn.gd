@@ -27,14 +27,14 @@ func _ready():
 	set_enemy(GameVars.enemy_team)
 	
 	to_first_operative()
-	
-	emit_signal("slots_updated")
 
 func set_team(vivos:Array, node:Node2D):
 	var i:int = 0
 	for vivo in vivos:
 		vivo = vivo as Vivosaur
 		if vivo == null:
+			if (node.get_child(i) as MedalSlot).medal != null:
+				(node.get_child(i) as MedalSlot).medal.queue_free()
 			(node.get_child(i) as MedalSlot).medal = null
 		else:
 			var medal:DinoMedal
@@ -51,6 +51,7 @@ func set_team(vivos:Array, node:Node2D):
 func set_own(team:Team):
 	$TeamHolderBattle/TeamName.text = team.label
 	set_team(team.get_all(), $Slots/Own)
+	emit_signal("slots_updated")
 
 func set_enemy(team:Team):
 	set_team(team.get_battlers(), $Slots/Enemy)
